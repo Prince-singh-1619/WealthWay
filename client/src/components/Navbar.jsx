@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import profileImg from '../../../../piclingo/client/src/assets/welcome-1.jpg' 
+import profileImg from '../assets/welcome-1.jpg' 
 import { FaHome, FaMoneyCheck } from "react-icons/fa";
 import { MdWallet } from "react-icons/md";
 import { IoAirplane } from "react-icons/io5";
