@@ -151,7 +151,7 @@ const EditProfile = () => {
                     <input type='text' placeholder='Last name' name='lastName'  className='w-full input-field' value={data.lastName} onChange={handleOnChange} />
                 </div>
                 <span className=' input-field cursor-not-allowed'>{data?.email}</span>
-                <input type='text' placeholder={data.userTag} name='userTag'  className='w-full input-field' value={data.userTag} onChange={handleOnChange}/>
+                <input type='text' placeholder={data.userTag!=='' ? data.userTag : "user tag"} name='userTag'  className='w-full input-field' value={data.userTag} onChange={handleOnChange}/>
               </div>
                   
           </div>
