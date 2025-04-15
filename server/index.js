@@ -17,7 +17,7 @@ connectDB()
 //middleware
 app.use(cors(
     {
-        origin: "http://localhost:5173",
+        origin: process.env.FRONTEND_URL,
         method: ["POST", "GET", "PUT", "DELETE"],
         credentials: true
     }
