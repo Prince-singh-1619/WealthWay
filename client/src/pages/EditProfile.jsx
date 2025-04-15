@@ -120,9 +120,9 @@ const EditProfile = () => {
     <section className='min-h-screen h-full p-4 pb-0'>
       <div className='flex  justify-between'>
         <p className='text-5xl max-sm:text-3xl font-bold text-center'>Update Profile</p>
-        <Link to='/my-profile' className='w-8 h-8 btn btn-bg btn-minus flex justify-center items-center rounded mt-2'>
+        <button onClick={()=>navigate(-1)} className='w-8 h-8 btn btn-bg btn-minus flex justify-center items-center rounded mt-2'>
           <span> <IoCloseSharp/> </span>
-        </Link>
+        </button>
       </div>
       <div className='w-full h-[0.5px] bg-slate-600 mt-4'></div>
 

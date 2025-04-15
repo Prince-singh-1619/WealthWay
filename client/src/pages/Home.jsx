@@ -284,236 +284,126 @@ const Home = () => {
   const loadingArray = new Array(11).fill(null)
 
   return (
-    // <section className='w-full p-4 text-xl '>
-
-    //   <section className='flex justify-between px-4 gap-4'>
-    //     {/* Expenses pie-chart */}
-    //     <div className='w-full p-2 bg-[#333333] rounded-2xl'>
-    //       <span className='text-slate-400'>Expenses: </span>
-    //       { loading ? (
-    //         <div className='flex px-6 gap-8 justify-center items-center animate-pulse'>
-    //           <div className='h-78 w-78 rounded-full btn-bg'></div>
-    //           <div className='flex flex-col gap-2'> 
-    //             {loadingArray.map((item, index) =>(
-    //               <div key={index} className='flex items-center gap-2'>
-    //                 <i className='w-5 h-5 rounded-full btn-bg'></i>
-    //                 <span className='w-32 h-5 rounded btn-bg'></span>
-    //               </div>
-    //             ))}
-    //           </div>
-    //         </div>
-    //       ) : (
-    //         <div className='flex items-center -mt-6 px-10 relative'>
-    //           <MakePieChart data={expenseArray}/>
-    //           {expenseArray.length===0 && <div className='opacity-50 text-center absolute top-1/2 left-1/3 transform -translate-x-1/3 -translate-y-1/2'>Nothing to display, <br/>try adding Something.</div>}
-    //           <div className="flex flex-col gap-2">
-    //             {categoryColorMap.map((entry, index) => (
-    //               <div key={index} className="flex items-center gap-2">
-    //                 <span
-    //                   className="inline-block w-4 h-4 rounded-full"
-    //                   style={{ backgroundColor: entry.color }}
-    //                 ></span>
-    //                 <span className="text-sm text-gray-200">{entry.expenseCategory}</span>
-    //               </div>
-    //             ))}
-    //           </div>
-    //         </div>
-    //       )}
-    //     </div>
-
-    //     {/* Earning pie-chart */}
-    //     <div className='w-full p-2 bg-[#333333] rounded-2xl'>
-    //       <span className='text-slate-400'>Earning: </span>
-    //       { loading ? (
-    //         <div className='flex px-6 gap-8 justify-center items-center animate-pulse'>
-    //           <div className='h-78 w-78 rounded-full btn-bg'></div>
-    //           <div className='flex flex-col gap-2'> 
-    //             {loadingArray.map((item, index) =>(
-    //               <div key={index} className='flex items-center gap-2'>
-    //                 <i className='w-5 h-5 rounded-full btn-bg'></i>
-    //                 <span className='w-32 h-5 rounded btn-bg'></span>
-    //               </div>
-    //             ))}
-    //           </div>
-    //         </div>
-    //       ) : (
-    //         <div className='flex items-center -mt-6 px-10 relative'>
-    //           <MakePieChart data={earningArray}/>
-    //           {earningArray.length===0 && <div className='opacity-50 text-center absolute top-1/2 left-1/3 transform -translate-x-1/3 -translate-y-1/2'>Nothing to display, <br/>try adding Something.</div>}
-    //           <div className="flex flex-col gap-2">
-    //             {categoryColorMap.map((entry, index) => (
-    //               <div key={index} className="flex items-center gap-2">
-    //                 <span
-    //                   className="inline-block w-4 h-4 rounded-full"
-    //                   style={{ backgroundColor: entry.color }}
-    //                 ></span>
-    //                 <span className="text-sm text-gray-200">{entry.earningCategory}</span>
-    //               </div>
-    //             ))}
-    //           </div>
-    //         </div>
-    //       )}
-          
-    //     </div>
-    //   </section>
-
-    //   <section className='mt-4 px-4'>
-    //     {/* Quick access */}
-    //     <div className='w-full p-2 bg-[#333333] rounded-2xl'>
-    //       <span className='text-slate-400'>Quick access: </span>
-    //       <div className='flex justify-around p-2'>
-    //         <Link to='/new-expense' className='btn btn-bg btn-minus flex gap-2 items-center justify-center'>
-    //           <i><FaPlus/></i>
-    //           <p>New Expense</p>
-    //         </Link>
-    //         <Link to='/new-earning' className='btn btn-bg btn-plus flex gap-2 items-center justify-center'>
-    //           <i><FaPlus/></i>
-    //           <p>New Earning</p>
-    //         </Link>
-    //         <Link to='/' className='btn btn-bg btn-plus flex gap-2 items-center justify-center'>
-    //           <i><FaPlus/></i>
-    //           <p>Create Trip</p>
-    //         </Link>
-    //       </div>
-    //     </div>
-    //   </section>
-
-    //   <section className='mt-4 px-4' >
-    //     <div className='w-full p-2 bg-[#333333] rounded-2xl relative'>
-    //       {loading ? (
-    //         <div className='w-full h-76 btn-bg animate-pulse rounded-2xl'></div>
-    //       ) : (
-    //         <div>
-    //           <MakeLineChart expenses={expenseArray} earnings={earningArray}/>
-    //           {(expenseArray.length===0 || earningArray.length===0) && <div className='opacity-50 text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>Nothing to display, try adding Something.</div>}
-    //         </div>
-    //       )}
-    //     </div>
-    //   </section>
-        
-    // </section>
-
     <section className="w-full p-4 text-base sm:text-xl">
-  {/* Expenses & Earning Pie Charts */}
-  <section className="flex flex-col lg:flex-row justify-between gap-4 px-0 sm:px-4">
-    
-    {/* Expenses pie-chart */}
-    <div className="w-full p-2 bg-[#333333] rounded-2xl">
-      <span className="text-slate-400">Expenses: </span>
-      {loading ? (
-        <div className="flex flex-col sm:flex-row px-4 gap-4 items-center animate-pulse">
-          <div className="h-40 w-40 sm:h-72 sm:w-72 rounded-full btn-bg"></div>
-          <div className="flex flex-col gap-2">
-            {loadingArray.map((_, index) => (
-              <div key={index} className="flex items-center gap-2">
-                <i className="w-5 h-5 rounded-full btn-bg"></i>
-                <span className="w-32 h-5 rounded btn-bg"></span>
+      {/* Expenses & Earning Pie Charts */}
+      <section className="flex flex-col lg:flex-row justify-between gap-4 px-0 sm:px-4">
+        
+        {/* Expenses pie-chart */}
+        <div className="w-full p-2 bg-[#333333] rounded-2xl">
+          <span className="text-slate-400">Expenses: </span>
+          {loading ? (
+            <div className="flex flex-col sm:flex-row px-4 gap-4 items-center animate-pulse">
+              <div className="h-40 w-40 sm:h-72 sm:w-72 rounded-full btn-bg"></div>
+              <div className="flex flex-col gap-2">
+                {loadingArray.map((_, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <i className="w-5 h-5 rounded-full btn-bg"></i>
+                    <span className="w-32 h-5 rounded btn-bg"></span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div className="flex flex-col sm:flex-row items-center sm:-mt-6 sm:px-10 relative">
-          <MakePieChart data={expenseArray} />
-          {expenseArray.length === 0 && (
-            <div className="opacity-50 text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              Nothing to display, <br /> try adding Something.
             </div>
-          )}
-          <div className="max-sm:w-full flex flex-col gap-2 max-sm:flex-row max-sm:flex-wrap mt-4 max-sm:pb-4">
-            {categoryColorMap.map((entry, index) => (
-              <div key={index} className="flex items-center gap-2">
-                <span
-                  className="inline-block w-4 h-4 rounded-full"
-                  style={{ backgroundColor: entry.color }}
-                ></span>
-                <span className="text-sm text-gray-200">{entry.expenseCategory}</span>
+          ) : (
+            <div className="flex flex-col sm:flex-row items-center sm:-mt-6 sm:px-10 relative">
+              <MakePieChart data={expenseArray} />
+              {expenseArray.length === 0 && (
+                <div className="opacity-50 text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  Nothing to display, <br /> try adding Something.
+                </div>
+              )}
+              <div className="max-sm:w-full flex flex-col gap-2 max-sm:flex-row max-sm:flex-wrap mt-4 max-sm:pb-4">
+                {categoryColorMap.map((entry, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <span
+                      className="inline-block w-4 h-4 rounded-full"
+                      style={{ backgroundColor: entry.color }}
+                    ></span>
+                    <span className="text-sm text-gray-200">{entry.expenseCategory}</span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-
-    {/* Earning pie-chart */}
-    <div className="w-full p-2 bg-[#333333] rounded-2xl">
-      <span className="text-slate-400">Earning: </span>
-      {loading ? (
-        <div className="flex flex-col sm:flex-row px-4 gap-4 items-center animate-pulse">
-          <div className="h-40 w-40 sm:h-72 sm:w-72 rounded-full btn-bg"></div>
-          <div className="flex flex-col gap-2">
-            {loadingArray.map((_, index) => (
-              <div key={index} className="flex items-center gap-2">
-                <i className="w-5 h-5 rounded-full btn-bg"></i>
-                <span className="w-32 h-5 rounded btn-bg"></span>
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div className="flex flex-col sm:flex-row items-center sm:-mt-6 sm:px-10 relative">
-          <MakePieChart data={earningArray} />
-          {earningArray.length === 0 && (
-            <div className="opacity-50 text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              Nothing to display, <br /> try adding Something.
-            </div>
-          )}
-          <div className="max-sm:w-full flex flex-col gap-2 max-sm:flex-row max-sm:flex-wrap mt-4 max-sm:pb-4">
-            {categoryColorMap.map((entry, index) => (
-              <div key={index} className="flex items-center gap-2">
-                <span
-                  className="inline-block w-4 h-4 rounded-full"
-                  style={{ backgroundColor: entry.color }}
-                ></span>
-                <span className="text-sm text-gray-200">{entry.earningCategory}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  </section>
-
-  {/* Quick access buttons */}
-  <section className="mt-4 px-0 sm:px-4">
-    <div className="w-full p-2 bg-[#333333] rounded-2xl">
-      <span className="text-slate-400">Quick access: </span>
-      <div className="flex flex-col sm:flex-row justify-around gap-2 p-2">
-        <Link to="/new-expense" className="btn btn-bg btn-minus flex gap-2 items-center justify-center">
-          <i><FaPlus /></i>
-          <p>New Expense</p>
-        </Link>
-        <Link to="/new-earning" className="btn btn-bg btn-plus flex gap-2 items-center justify-center">
-          <i><FaPlus /></i>
-          <p>New Earning</p>
-        </Link>
-        <Link to="/" className="btn btn-bg btn-plus flex gap-2 items-center justify-center">
-          <i><FaPlus /></i>
-          <p>Create Trip</p>
-        </Link>
-      </div>
-    </div>
-  </section>
-
-  {/* Line chart */}
-  <section className="mt-4 px-0 sm:px-4">
-    <div className="w-full p-2 bg-[#333333] rounded-2xl relative min-h-[200px]">
-      {loading ? (
-        <div className="w-full h-72 btn-bg animate-pulse rounded-2xl"></div>
-      ) : (
-        <div>
-          <MakeLineChart expenses={expenseArray} earnings={earningArray} />
-          {(expenseArray.length === 0 || earningArray.length === 0) && (
-            <div className="opacity-50 text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              Nothing to display, try adding Something.
             </div>
           )}
         </div>
-      )}
-    </div>
-  </section>
-</section>
 
+        {/* Earning pie-chart */}
+        <div className="w-full p-2 bg-[#333333] rounded-2xl">
+          <span className="text-slate-400">Earning: </span>
+          {loading ? (
+            <div className="flex flex-col sm:flex-row px-4 gap-4 items-center animate-pulse">
+              <div className="h-40 w-40 sm:h-72 sm:w-72 rounded-full btn-bg"></div>
+              <div className="flex flex-col gap-2">
+                {loadingArray.map((_, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <i className="w-5 h-5 rounded-full btn-bg"></i>
+                    <span className="w-32 h-5 rounded btn-bg"></span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className="flex flex-col sm:flex-row items-center sm:-mt-6 sm:px-10 relative">
+              <MakePieChart data={earningArray} />
+              {earningArray.length === 0 && (
+                <div className="opacity-50 text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  Nothing to display, <br /> try adding Something.
+                </div>
+              )}
+              <div className="max-sm:w-full flex flex-col gap-2 max-sm:flex-row max-sm:flex-wrap mt-4 max-sm:pb-4">
+                {categoryColorMap.map((entry, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <span
+                      className="inline-block w-4 h-4 rounded-full"
+                      style={{ backgroundColor: entry.color }}
+                    ></span>
+                    <span className="text-sm text-gray-200">{entry.earningCategory}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Quick access buttons */}
+      <section className="mt-4 px-0 sm:px-4">
+        <div className="w-full p-2 bg-[#333333] rounded-2xl">
+          <span className="text-slate-400">Quick access: </span>
+          <div className="flex flex-col sm:flex-row justify-around gap-2 p-2">
+            <Link to="/new-expense" className="btn btn-bg btn-minus flex gap-2 items-center justify-center">
+              <i><FaPlus /></i>
+              <p>New Expense</p>
+            </Link>
+            <Link to="/new-earning" className="btn btn-bg btn-plus flex gap-2 items-center justify-center">
+              <i><FaPlus /></i>
+              <p>New Earning</p>
+            </Link>
+            {/* <Link to="/" className="btn btn-bg btn-plus flex gap-2 items-center justify-center">
+              <i><FaPlus /></i>
+              <p>Create Trip</p>
+            </Link> */}
+          </div>
+        </div>
+      </section>
+
+      {/* Line chart */}
+      <section className="mt-4 px-0 sm:px-4">
+        <div className="w-full p-2 bg-[#333333] rounded-2xl relative min-h-[200px]">
+          {loading ? (
+            <div className="w-full h-72 btn-bg animate-pulse rounded-2xl"></div>
+          ) : (
+            <div>
+              <MakeLineChart expenses={expenseArray} earnings={earningArray} />
+              {(expenseArray.length === 0 || earningArray.length === 0) && (
+                <div className="opacity-50 text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  Nothing to display, try adding Something.
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+    </section>
   )
 }
 

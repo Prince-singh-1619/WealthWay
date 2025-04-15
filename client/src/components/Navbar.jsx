@@ -73,7 +73,7 @@ const Navbar = () => {
 
 
     return (
-    <section className="fixed h-screen flex z-40 ">
+    <section className="fixed h-full flex z-40 ">
       <motion.div
         initial="open"
         animate={showSidebar ? "open" : "closed"}
@@ -89,7 +89,7 @@ const Navbar = () => {
                         </div>
                         <span className='inline-block font-semibold text-xl'>{user?.firstName} {user?.lastName}</span>
                     </div>
-                    <div className='flex flex-col h-full gap-4 pl-4'>
+                    <div className='flex flex-col justify-center h-full gap-4 pl-4'>
                         {
                             navArray.map((data, index)=>{
                                 return (
@@ -110,7 +110,7 @@ const Navbar = () => {
                 </section>    
             ) : (
                 <section className={`w-16 h-full pt-52 p-2 bg-gray-700 flex flex-col gap-12 relative`}>
-                    <div className='flex flex-col h-full gap-6 py-2'>
+                    <div className='flex flex-col justify-center h-full gap-6 py-2 -mt-9'>
                         {
                             navArray.map((data, index)=>{
                                 return (

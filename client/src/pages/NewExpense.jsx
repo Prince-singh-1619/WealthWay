@@ -84,9 +84,9 @@ const NewExpense = () => {
     <section>
         <div className='flex items-center justify-between p-2 px-4 my-auto '>
             <h2 className='color-minus font-bold'>New Expense</h2>
-            <Link to='/expense' className='w-8 h-8 btn btn-bg btn-minus flex justify-center items-center rounded mt-4'>
+            <button onClick={()=>navigate(-1)} className='w-8 h-8 btn btn-bg btn-minus flex justify-center items-center rounded mt-4'>
                 <span> <IoCloseSharp/> </span>
-            </Link>
+            </button>
         </div>
         <div className='w-full h-[0.5px] bg-slate-600 mt-4'></div>
 

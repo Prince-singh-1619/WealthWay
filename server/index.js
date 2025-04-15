@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 8080
 
 connectDB()
 
-const allowedOrigins = ['https://wealthway-hazel.vercel.app'];
+const allowedOrigins = ['https://wealthway-hazel.vercel.app', 'http://localhost:5173'];
 //middleware
 app.use(cors(
     {
