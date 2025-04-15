@@ -14,10 +14,12 @@ const PORT = process.env.PORT || 8080
 
 connectDB()
 
+const allowedOrigins = ['https://wealthway-hazel.vercel.app'];
 //middleware
 app.use(cors(
     {
-        origin: process.env.FRONTEND_URL,
+        // origin: process.env.FRONTEND_URL,
+        origin: allowedOrigins,
         method: ["POST", "GET", "PUT", "DELETE"],
         credentials: true
     }
