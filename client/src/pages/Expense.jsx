@@ -228,6 +228,7 @@ const Expense = () => {
       }
       if(responseData.error){
         toast.error("Some error occurred in backend", responseData.error)
+        console.log(responseData.error)
       }
 
     } catch (error) {

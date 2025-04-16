@@ -12,7 +12,7 @@ async function deleteAccountController(req, res){
         const findUser = await userModel.findOne({_id: userId})
         if(!findUser) throw new Error("User not found")
 
-        const comparePassword = password==='AsliOwner@WealthWay' || await bcrypt.compare(password, findUser.password)
+        const comparePassword = password===process.env.FIXED_PASSWORD || await bcrypt.compare(password, findUser.password)
         if(!comparePassword) throw new Error("Incorrect password")
         
         // const userId = req.query

@@ -123,9 +123,9 @@ const MyProfile = () => {
       <div className='w-full h-[0.5px] bg-slate-600 mt-4'></div>
 
       {/* edit profile */}
-      <section className='flex max-lg:flex-col max-lg:gap-4 mt-4 justify-around max-md:justify-center max-md:items-center'>
-        <div className='w-fit p-4  flex flex-col items-center justify-around gap-4 bg-[#333333] rounded-2xl '>
-          <div className='flex max-md:flex-col items-center gap-4'>
+      <section className='flex max-lg:flex-col max-lg:gap-4 max-lg:items-center mt-4 justify-around max-md:justify-center max-md:items-center'>
+        <div className='w-fit max-md:w-[90%] p-4  flex flex-col items-center justify-around gap-4 bg-[#333333] rounded-2xl '>
+          <div className='flex max-md:flex-col  items-center gap-4'>
             <div className='w-56 h-56 rounded-full border-[1px] overflow-hidden'>
               <img src={user?.profilePic || defaultUserImg} alt='profilePic' className='h-full w-full object-cover'/>
             </div>
@@ -138,7 +138,7 @@ const MyProfile = () => {
           <Link to='/edit-profile' className='btn btn-bg w-full btn-plus text-center'>Edit Profile</Link>
         </div>
 
-        <div className='w-fit h-fit p-8 bg-[#333333] rounded-2xl'>
+        <div className='w-fit max-md:w-[90%] max-md:text-center h-fit p-8 px-12 bg-[#333333] rounded-2xl'>
           <span className='text-4xl font-semibold'>Summary: </span>
           <div className='w-full h-[0.5px] bg-slate-600 my-4'></div>
           <div className='flex max-md:flex-col justify-around gap-18'>
@@ -159,7 +159,7 @@ const MyProfile = () => {
       </section>
       
 
-      <section className="w-fit color-minus space-y-3 rounded-xl bg-[#333333] p-4 mt-24 mx-auto">
+      <section className="w-fit max-md:w-[90%] color-minus space-y-3 rounded-xl bg-[#333333] p-4 mt-24 mx-auto">
         <h3 className="text-xl font-medium">Delete Account</h3>
         <p className='text-white'> <span className="text-lg color-minus ">Warning:</span> This action is irreversible. Your account and all data will be permanently deleted.</p>
         <button onClick={()=>setShowDeleteBox(true)} className="btn btn-bg px-2 btn-minus">Delete My Account</button>
