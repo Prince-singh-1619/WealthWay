@@ -21,7 +21,8 @@ async function loginController(req, res){
             const tokenOption = {
                 httpOnly: true, 
                 secure: true,
-                sameSite: "None",
+                sameSite: 'None',
+                path: "/", // where to set
                 maxAge:7*24*60*60*1000
             }
 

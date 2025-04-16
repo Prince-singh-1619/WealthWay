@@ -32,7 +32,8 @@ async function signUpController(req, res) {
         const tokenOption = {
             httpOnly: true, 
             secure: true,
-            sameSite: "None",
+            sameSite: 'None',
+            path: "/", // where to set
             maxAge:7*24*60*60*1000
         }
         res.cookie("token", token, tokenOption)

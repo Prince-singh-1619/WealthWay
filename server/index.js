@@ -20,8 +20,8 @@ app.use(cors(
     {
         // origin: process.env.FRONTEND_URL,
         origin: allowedOrigins,
+        credentials: true,
         methods: ["POST", "GET", "PUT", "DELETE"],
-        credentials: true
     }
 ))
 app.use(express.json({ limit:'2mb' }))
