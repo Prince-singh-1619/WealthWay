@@ -83,7 +83,7 @@ const NewExpense = () => {
 
 
   return (
-    <section>
+    <section className=''>
         <div className='flex items-center justify-between p-2 px-4 my-auto '>
             <h2 className='color-minus font-bold'>New Expense</h2>
             <button onClick={()=>navigate(-1)} className='w-8 h-8 btn btn-bg btn-minus flex justify-center items-center rounded mt-4'>
@@ -92,7 +92,7 @@ const NewExpense = () => {
         </div>
         <div className='w-full h-[0.5px] bg-slate-600 mt-4'></div>
 
-        <form onSubmit={handleSubmit} className='flex max-md:flex-col gap-2 p-4 justify-around'>
+        <form onSubmit={handleSubmit} className='flex max-md:flex-col gap-2 p-4 justify-around max-md:pb-36'>
             <section className='w-[55%] max-md:w-[95%] flex flex-col gap-6'>
                 <div className='w-full flex items-center justify-between gap-4'>
                     <label htmlFor='title' className='text-xl font-bold'>Title*</label>
@@ -158,7 +158,7 @@ const NewExpense = () => {
                         </label>
                     )
                 }
-                <button className='btn btn-bg btn-plus'>Save</button>
+                <button className='btn btn-bg btn-plus max-md:my-4'>Save</button>
             </section>
         </form>
 

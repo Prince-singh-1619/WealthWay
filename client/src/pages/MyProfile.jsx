@@ -96,15 +96,33 @@ const MyProfile = () => {
   const totalExpense = expenseArray.reduce((acc, item) => acc + item.amount, 0);
   const totalEarning = earningArray.reduce((acc, item) => acc + item.amount, 0);
 
-  const handleLogout = () =>{
-    try {
+  const handleLogout = async() =>{
+    const response = await fetch(SummaryApi.logout.url, {
+      method: SummaryApi.logout.method,
+      credentials: 'include'
+    })
+    const data = await response.json()
+    if(data.success){
+      toast.success(data.message)
       localStorage.clear()
       dispatch(logout())
-      navigate('/login')
-    } catch (error) {
-      toast.warning("Error logging out")
-      console.log("Error logging out", error)
+      navigate("/login")
     }
+    if(data.error){
+      toast.error(data.message)
+      toast.warning("Error logging out")
+      console.log("Error logging out", data.error)
+    }
+
+
+    // try {
+    //   localStorage.clear()
+    //   dispatch(logout())
+    //   navigate('/login')
+    // } catch (error) {
+    //   toast.warning("Error logging out")
+    //   console.log("Error logging out", error)
+    // }
   }
 
 

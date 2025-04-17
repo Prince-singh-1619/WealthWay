@@ -10,6 +10,10 @@ const SummaryApi = {
         url: `${backendDomain}/api/login`,
         method: "POST"
     },
+    logout:{
+        url: `${backendDomain}/api/logout`,
+        method: "GET"
+    },
     newExpense:{
         url: `${backendDomain}/api/new-expense`,
         method: "POST"

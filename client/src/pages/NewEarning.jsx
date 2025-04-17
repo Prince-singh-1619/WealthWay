@@ -67,7 +67,7 @@ return (
       </div>
       <div className='w-full h-[0.5px] bg-slate-600 mt-4'></div>
 
-      <form onSubmit={handleSubmit} className='flex p-4 justify-start'>
+      <form onSubmit={handleSubmit} className='flex p-4 justify-start pb-12'>
           <section className='w-[55%] max-[1024px]:w-[95%] flex flex-col gap-6'>
               <div className='w-full flex max-[400px]:flex-col items-center justify-between gap-4'>
                   <label htmlFor='title' className='text-xl font-bold'>Title*</label>
@@ -116,7 +116,7 @@ return (
                   <label htmlFor='description' className='text-xl font-bold'>Description</label>
                   <textarea id="description" name="description" value={data.description} placeholder="Enter other details (optional)" className="input-field w-[80%] h-48 resize-none" onChange={handleOnChange}/>  
               </div>
-              <button className='btn btn-bg btn-plus w-[80%] ml-auto max-[400px]:mx-auto'>Save</button>
+              <button className='btn btn-bg btn-plus w-[80%] ml-auto max-[400px]:mx-auto mt-4'>Save</button>
           </section>
       </form>
 

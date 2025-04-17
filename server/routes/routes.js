@@ -20,6 +20,7 @@ const editExpenseController = require('../controller/expense/editExpense')
 const uploadMergedExpensesController = require('../controller/expense/uploadMergedExpenses')
 const deleteAccountController = require('../controller/user/deleteAccount')
 const sendMessageController = require('../controller/support/sendMessage')
+const logoutController = require('../controller/user/logout')
 
 
 
@@ -45,5 +46,6 @@ router.delete('/delete-user', authToken, deleteAccountController)
 
 router.get('/fetch-earnings', authToken, fetchEarningsController)
 router.get('/fetch-expenses', authToken, fetchExpensesController)
+router.get('/logout', authToken, logoutController)
 
 module.exports = router
