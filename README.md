@@ -52,17 +52,20 @@ WealthWay is a full-stack personal finance tracking web application that helps u
 ```terminal
 cd backend
 npm install
+```
 
 ---
 
 #### Frontend:
-```terminal
+````terminal
 cd frontend
 npm install
+````
 
 ---
 
-🔐 Set up Environment Variables
+#### 🔐 Set up Environment Variables
+````terminal
 Create a .env file in /backend directory and add the following:
 
 MONGODB_URI=your_mongodb_connection_string
@@ -70,6 +73,7 @@ FRONTEND_URL="http://localhost:----"
 TOKEN_SECRET_KEY=your_jwt_secret
 ADMIN_EMAIL=your_admin_email
 ADMIN_EMAIL_PASSWORD=your_app_password
+````
 
 ---
 
@@ -77,8 +81,11 @@ ADMIN_EMAIL_PASSWORD=your_app_password
 Backend: nodemon start
 Frontend: npm run dev
 
-🙋‍♂️ Author
+---
+
+## 🙋‍♂️ Author
 Developed by: Prince Singh
 📧 Email: princesinghps1619@gmail.om
 🔗 LinkedIn: https://www.linkedin.com/in/prince-singh-ps171619/
+💻 GitHub: https://github.com/Prince-singh-1619/WealthWay
 
