@@ -77,15 +77,15 @@ ADMIN_EMAIL_PASSWORD=your_app_password
 
 ---
 
-🚀 Run the App
-Backend: nodemon start
-Frontend: npm run dev
+🚀 Run the App  
+Backend: nodemon start  
+Frontend: npm run dev  
 
 ---
 
-## 🙋‍♂️ Author
-Developed by: Prince Singh
-📧 Email: princesinghps1619@gmail.om
-🔗 LinkedIn: https://www.linkedin.com/in/prince-singh-ps171619/
+## 🙋‍♂️ Author  
+Developed by: Prince Singh  
+📧 Email: princesinghps1619@gmail.om  
+🔗 LinkedIn: https://www.linkedin.com/in/prince-singh-ps171619/  
 💻 GitHub: https://github.com/Prince-singh-1619/WealthWay
 
