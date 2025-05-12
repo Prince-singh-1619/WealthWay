@@ -39,8 +39,14 @@ WealthWay is a full-stack personal finance tracking web application that helps u
 
 ## 📷 Screenshots
 
-<!-- Add screenshots here if available -->
-<!-- Example: ![Dashboard](./screenshots/dashboard.png) -->
+![Login](./client/src/assets/SS%201.png)
+![Home](./client/src/assets//SS%202.png)
+![Home](./client/src/assets/SS%203.png)
+![Expenses](./client/src/assets/SS%204.png)
+![New Expenses](./client/src/assets/SS%204.5.png)
+![Earnings](./client/src/assets/SS%205.png)
+![My profile](./client/src/assets/SS%206.png)
+![Support](./client/src/assets/SS%207.png)
 
 ---
 
