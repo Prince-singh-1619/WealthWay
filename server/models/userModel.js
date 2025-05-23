@@ -25,6 +25,9 @@ const userSchema = new mongoose.Schema({
     profilePic: {
         type: String,
     },
+    
+    resetPasswordToken: String,
+    resetPasswordExpires: String
 }, {timestamps: true})
 
 const userModel = mongoose.model("User", userSchema)

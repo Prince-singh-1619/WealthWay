@@ -10,6 +10,14 @@ const SummaryApi = {
         url: `${backendDomain}/api/login`,
         method: "POST"
     },
+    forgotPassword:{
+        url: `${backendDomain}/api/forgot-password`,
+        method: "POST"
+    },
+    resetPassword:{
+        url: `${backendDomain}/api/reset-password`,
+        method: "POST"
+    },
     logout:{
         url: `${backendDomain}/api/logout`,
         method: "GET"
@@ -65,7 +73,7 @@ const SummaryApi = {
     getSupport:{
         url: `${backendDomain}/api/support`,
         method: "POST"
-    }
+    },
 }
 
 export default SummaryApi

@@ -17,6 +17,8 @@ import { ToastContainer } from 'react-toastify';
 import EditProfile from './pages/EditProfile';
 import ShowDescription from './helpers/ShowDescription';
 import { useSelector } from 'react-redux';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
 const Layout = () => {
   const sidebar = useSelector(state => state.navData.showSidebar);
@@ -54,6 +56,9 @@ function App() {
       <Routes>
         <Route path="/login" element={<PublicOnlyRoute> <Login/> </PublicOnlyRoute>}/>
         <Route path="/signup" element={<PublicOnlyRoute> <SignUp/> </PublicOnlyRoute>}/>
+        <Route path="/forgot-password" element={<PublicOnlyRoute> <ForgotPassword/> </PublicOnlyRoute>}/>
+        <Route path="/reset-password/:token" element={<PublicOnlyRoute> <ResetPassword/> </PublicOnlyRoute>}/>
+        
         <Route className='max-md:ml-14' element={<ProtectedRoute> <Layout/> </ProtectedRoute>} >
           <Route path="/" element={<Home/>} />
           <Route path="/expense" element={<Expense/>} />
@@ -64,8 +69,6 @@ function App() {
           <Route path="/new-expense" element={<NewExpense/>} />
           <Route path="/new-earning" element={<NewEarning/>} />
           <Route path="/edit-profile" element={<EditProfile/>} />
-
-
           {/* <Route path="/show" element={<ShowDescription/>} /> */}
         </Route>
       </Routes>

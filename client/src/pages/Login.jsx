@@ -102,6 +102,7 @@ const Login = () => {
                                 <i onClick={() => setShowPassword((prev) => !prev)} className='cursor-pointer absolute right-4'> {showPassword ? (<FaEyeSlash />) : (<FaEye />)}
                                 </i>
                             </label>
+                            <Link to={'/forgot-password'} className='underline text-blue-400 text-right -mt-2 mb-2'>forgot password?</Link>
                             <button className='btn btn-bg btn-plus'>{loading?("loading..."):("Log in")}</button>
                         </form>
 

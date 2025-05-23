@@ -21,6 +21,8 @@ const uploadMergedExpensesController = require('../controller/expense/uploadMerg
 const deleteAccountController = require('../controller/user/deleteAccount')
 const sendMessageController = require('../controller/support/sendMessage')
 const logoutController = require('../controller/user/logout')
+const forgotPasswordController = require('../controller/user/forgotPassword')
+const resetPasswordController = require('../controller/user/resetPassword')
 
 
 
@@ -29,6 +31,8 @@ const logoutController = require('../controller/user/logout')
 router.post('/signup', signUpController)
 router.post('/login', loginController)
 router.post('/support', authToken, sendMessageController)
+router.post('/forgot-password', forgotPasswordController)
+router.post('/reset-password/:token', resetPasswordController)
 
 router.post('/new-expense', authToken, newExpenseController)
 router.post('/new-earning', authToken, newEarningController)
