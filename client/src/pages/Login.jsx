@@ -83,6 +83,11 @@ const Login = () => {
 
     return (
         <div className='h-screen flex flex-col justify-center items-center'>
+            <p class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 text-sm rounded-md shadow-md mb-2">
+                <strong class="font-semibold">Important:</strong> Please enable 
+                <strong class="font-semibold">third-party cookies</strong> in your browser to log in or sign up successfully.
+            </p>
+            
             <div className='flex justify-center items-center gap-2'>
                 <img src={logo} alt='logo' className='w-16 h-16'/>
                 <p className='text-4xl  '>WealthWay</p>
