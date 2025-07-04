@@ -41,7 +41,8 @@ const NewEarning = () => {
             method: SummaryApi.newEarning.method,
             credentials: 'include',
             headers: {
-            "content-type" : "application/json"
+                Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
+                "content-type" : "application/json"
             },
             body: JSON.stringify({...data, userId})
         })

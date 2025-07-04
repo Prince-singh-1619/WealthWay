@@ -33,6 +33,7 @@ const DeleteAccount = ({open, onClose}) => {
                 method: SummaryApi.deleteUser.method,
                 credentials: 'include',
                 headers:{
+                    Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
                     'Content-Type' : 'application/json'
                 },
             })
@@ -71,8 +72,8 @@ const DeleteAccount = ({open, onClose}) => {
         }
     }, [open, onClose])
 
-
     if(!open) return null
+
   return (
     <section className='fixed inset-0 backdrop-blur-lg w-full h-full flex justify-center items-center z-50'>
         <form ref={dialogRef} onSubmit={handleSubmit} className='w-fit bg-[#222222] p-8 rounded-2xl space-y-4'>

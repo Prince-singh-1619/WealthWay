@@ -56,6 +56,7 @@ const Earnings = () => {
         method: SummaryApi.fetchEarnings.method,
         credentials: 'include',
         headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
           "content-type" : "application/json",
         },
         // body: JSON.stringify({userId: user.userId})
@@ -304,6 +305,7 @@ const Earnings = () => {
         method: SummaryApi.deleteEarning.method,
         credentials: 'include',
         headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
           'content-type' : 'application/json'
         }
       })
@@ -334,6 +336,7 @@ const Earnings = () => {
         method: SummaryApi.editEarning.method,
         credentials: 'include',
         headers :{
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
           'content-type' : 'application/json'
         },
         body : JSON.stringify(editData)

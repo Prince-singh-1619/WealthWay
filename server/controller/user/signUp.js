@@ -27,22 +27,25 @@ async function signUpController(req, res) {
         const newUser = new userModel(payload)
         const saveUser = await newUser.save()
 
-        const tokenData = { userId: saveUser._id }
-        const token = jwt.sign(tokenData, process.env.TOKEN_SECRET_KEY, {expiresIn: 60*60*24*7})
-        const tokenOption = {
-            httpOnly: true, 
-            secure: true,
-            sameSite: "None",
-            path: "/", // where to set
-            maxAge:7*24*60*60*1000
-        }
-        res.cookie("token", token, tokenOption)
-
+        const tokenPayload = { userId: saveUser._id }
+        const token = jwt.sign(tokenPayload, process.env.TOKEN_SECRET_KEY, {expiresIn: 60*60*24*7})
+        
         const { password: _, ...userWithoutPassword} = saveUser.toObject();
+        
+        // const tokenOption = {
+        //     httpOnly: true, 
+        //     secure: true,
+        //     sameSite: "None",
+        //     path: "/", // where to set
+        //     maxAge:7*24*60*60*1000
+        // }
+        // res.cookie("token", token, tokenOption)
+
 
         res.status(201).json({
             message: "User created successfully",
-            data: token, 
+            // data: token, 
+            token,
             user : {
                 userId: userWithoutPassword._id,
                 firstName: userWithoutPassword.firstName,
@@ -56,7 +59,7 @@ async function signUpController(req, res) {
         })
     } 
     catch (err) {
-        res.json({
+        res.status(400).json({
             error: true,
             success: false,
             message: err.message || err,

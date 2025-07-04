@@ -89,10 +89,13 @@ const SignUp = () => {
                 console.log("dataApi message from success: ", dataApi.message)
                 dispatch(login({
                     user: dataApi.user,
-                    token: dataApi.data
+                    // token: dataApi.data
+                    token: dataApi.token
                 }))
+                
                 //for directly going to homepage
-                localStorage.setItem("authToken", dataApi.data) //here data===token as passed from backend
+                // localStorage.setItem("authToken", dataApi.data) //here data===token as passed from backend
+                localStorage.setItem("authToken", dataApi.token) 
                 toast.success(dataApi.message)
                 navigate('/')
             }
@@ -109,10 +112,10 @@ const SignUp = () => {
 
     return (
         <div className='min-h-screen h-full flex flex-col justify-center items-center'>
-            <p class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 text-sm rounded-md shadow-md mb-2">
+            {/* <p class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 text-sm rounded-md shadow-md mb-2">
                 <strong class="font-semibold">Important:</strong> Please enable 
-                <strong class="font-semibold">third-party cookies</strong> in your browser to log in or sign up successfully.
-            </p>
+                <strong class="font-semibold"> third-party cookies</strong> in your browser to log in or sign up successfully.
+            </p> */}
 
             <div className='flex justify-center items-center gap-2'>
                 <img src={logo} alt='logo' className='w-16 h-16'/>

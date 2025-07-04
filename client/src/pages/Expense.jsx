@@ -213,6 +213,7 @@ const Expense = () => {
         method: SummaryApi.fetchExpenses.method,
         credentials: 'include',
         headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
           "content-type" : "application/json",
         },
         // body: JSON.stringify({userId: user.userId})
@@ -332,6 +333,7 @@ const Expense = () => {
         method: SummaryApi.deleteExpense.method,
         credentials: 'include',
         headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
           'content-type' : 'application/json'
         }
       })
@@ -362,6 +364,7 @@ const Expense = () => {
         method: SummaryApi.editExpense.method,
         credentials: 'include',
         headers :{
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
           'content-type' : 'application/json'
         },
         body : JSON.stringify(editData)

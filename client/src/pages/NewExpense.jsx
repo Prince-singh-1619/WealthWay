@@ -58,15 +58,14 @@ const NewExpense = () => {
         console.log("data submitted", data)
         const userId = user.userId
         // const userId = localStorage.getItem("userId")
-        const token = localStorage.getItem("authToken")
+        // const token = localStorage.getItem("authToken")
 
         const response = await fetch(SummaryApi.newExpense.url, {
             method: SummaryApi.newExpense.method,
             credentials: 'include',
             headers: {
+                Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
                 "content-type" : "application/json",
-                // "Authorization": `Bearer ${user.data}`,
-                "Authorization": `Bearer ${token}`,
             },
             body: JSON.stringify({...data, userId})
         })

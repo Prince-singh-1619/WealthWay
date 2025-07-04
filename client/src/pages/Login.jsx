@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router'
+import { Link, useLocation, useNavigate } from 'react-router'
 import SummaryApi from '../helpers/SummaryApi'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import Carousel from '../components/Carousel'
@@ -23,6 +23,10 @@ const Login = () => {
     // const {setUserId} = useContext(UserContext)
     const navigate = useNavigate()
     const dispatch = useDispatch()
+
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+
     const images = [img1, img2, img3, img4]
 
     const handleOnChange = (e) =>{
@@ -55,12 +59,13 @@ const Login = () => {
             console.log("fetched data", dataApi)
             dispatch(login({
                 user: dataApi.user,
-                token: dataApi.data
+                // token: dataApi.data
+                token: dataApi.token
             }))
 
 
-            localStorage.setItem("authToken", dataApi.data) //here data===token as passed from backend
-            // localStorage.setItem("token", dataApi.data.token) 
+            // localStorage.setItem("authToken", dataApi.data) //here data===token as passed from backend
+            localStorage.setItem("authToken", dataApi.token) 
             console.log("authToken", dataApi.data)
 
         // need to used here redux or recoil to store the data
@@ -70,23 +75,22 @@ const Login = () => {
             // setUserId(dataApi.user.userId)
 
             // navigate('/', {userId: dataApi.user.userId})
-            navigate('/')
+            navigate(from, {replace: true})
             console.log("navigating...")
         }
         if(dataApi.error){
             toast.error(dataApi.message)
         }
         setLoading(false)
-
     }
 
 
     return (
         <div className='h-screen flex flex-col justify-center items-center'>
-            <p class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 text-sm rounded-md shadow-md mb-2">
+            {/* <p class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 text-sm rounded-md shadow-md mb-2">
                 <strong class="font-semibold">Important:</strong> Please enable 
-                <strong class="font-semibold">third-party cookies</strong> in your browser to log in or sign up successfully.
-            </p>
+                <strong class="font-semibold"> third-party cookies</strong> in your browser to log in or sign up successfully.
+            </p> */}
             
             <div className='flex justify-center items-center gap-2'>
                 <img src={logo} alt='logo' className='w-16 h-16'/>

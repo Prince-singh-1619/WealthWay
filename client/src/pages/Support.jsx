@@ -33,6 +33,7 @@ const Support = () => {
         method: SummaryApi.getSupport.method,
         credentials: 'include',
         headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
