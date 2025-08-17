@@ -226,6 +226,8 @@ const Expense = () => {
         // alert("data fetch success")
         const reversedArray = responseData.data.slice().reverse();
         setExpenseArray(reversedArray)
+        const totalExpense = expenseArray.reduce((acc, item) => acc + item.amount, 0);
+        localStorage.setItem("totalExpense", totalExpense)
       }
       if(responseData.error){
         toast.error("Some error occurred in backend", responseData.error)

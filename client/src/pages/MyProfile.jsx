@@ -14,77 +14,77 @@ const MyProfile = () => {
   const [showDeleteBox, setShowDeleteBox] = useState(false)
   const {user} = useSelector((state) => state.auth)
 
-  const [expenseArray, setExpenseArray] = useState([])
-  const [earningArray, setEarningArray] = useState([])
-  const [loading, setLoading] = useState()
+  // const [expenseArray, setExpenseArray] = useState([])
+  // const [earningArray, setEarningArray] = useState([])
+  // const [loading, setLoading] = useState()
 
-  const fetchEarningArray = async() =>{
-    try {
-      console.log("userId: ", user.userId)
-      const response = await fetch(`${SummaryApi.fetchEarnings.url}?userId=${user.userId}` ,{
-        method: SummaryApi.fetchEarnings.method,
-        credentials: 'include',
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
-          "content-type" : "application/json",
-        },
-        // body: JSON.stringify({userId: user.userId})
-      })
-      const responseData = await response.json()
-      console.log("response done ")
+  // const fetchEarningArray = async() =>{
+  //   try {
+  //     console.log("userId: ", user.userId)
+  //     const response = await fetch(`${SummaryApi.fetchEarnings.url}?userId=${user.userId}` ,{
+  //       method: SummaryApi.fetchEarnings.method,
+  //       credentials: 'include',
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
+  //         "content-type" : "application/json",
+  //       },
+  //       // body: JSON.stringify({userId: user.userId})
+  //     })
+  //     const responseData = await response.json()
+  //     console.log("response done ")
     
-      if(responseData.success){
-        setEarningArray(responseData.data)
-        console.log("earningArray", earningArray)
-        // alert("data fetch success")
-      }
-      if(responseData.error){
-        toast.error("Some error occurred in backend", responseData.error)
-      }
+  //     if(responseData.success){
+  //       setEarningArray(responseData.data)
+  //       console.log("earningArray", earningArray)
+  //       // alert("data fetch success")
+  //     }
+  //     if(responseData.error){
+  //       toast.error("Some error occurred in backend", responseData.error)
+  //     }
 
-    } catch (error) {
-     toast.error("Some error occurred while fetch earnings", error) 
-    }
-  }
-  const fetchExpenseArray = async() =>{
-    try {
-      console.log("userId: ", user.userId)
-      const response = await fetch(`${SummaryApi.fetchExpenses.url}?userId=${user.userId}` ,{
-        method: SummaryApi.fetchExpenses.method,
-        credentials: 'include',
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
-          "content-type" : "application/json",
-        },
-        // body: JSON.stringify({userId: user.userId})
-      })
-      const responseData = await response.json()
-      console.log("response done ")
+  //   } catch (error) {
+  //    toast.error("Some error occurred while fetch earnings", error) 
+  //   }
+  // }
+  // const fetchExpenseArray = async() =>{
+  //   try {
+  //     console.log("userId: ", user.userId)
+  //     const response = await fetch(`${SummaryApi.fetchExpenses.url}?userId=${user.userId}` ,{
+  //       method: SummaryApi.fetchExpenses.method,
+  //       credentials: 'include',
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
+  //         "content-type" : "application/json",
+  //       },
+  //       // body: JSON.stringify({userId: user.userId})
+  //     })
+  //     const responseData = await response.json()
+  //     console.log("response done ")
     
-      if(responseData.success){
-        // setExpenseArray(responseData.data)
-        // alert("data fetch success")
-        const reversedArray = responseData.data.slice().reverse();
-        setExpenseArray(reversedArray)
-      }
-      if(responseData.error){
-        toast.error("Some error occurred in backend", responseData.error)
-      }
+  //     if(responseData.success){
+  //       // setExpenseArray(responseData.data)
+  //       // alert("data fetch success")
+  //       const reversedArray = responseData.data.slice().reverse();
+  //       setExpenseArray(reversedArray)
+  //     }
+  //     if(responseData.error){
+  //       toast.error("Some error occurred in backend", responseData.error)
+  //     }
 
-    } catch (error) {
-     toast.error("Some error occurred while fetch expenses", error) 
-    }
-  }
+  //   } catch (error) {
+  //    toast.error("Some error occurred while fetch expenses", error) 
+  //   }
+  // }
 
-  useEffect(()=>{
-    const handleLoading = async () => {
-      setLoading(true);
-      await fetchEarningArray();
-      await fetchExpenseArray();
-      setLoading(false);
-    };
-    handleLoading();
-  }, [])
+  // useEffect(()=>{
+  //   const handleLoading = async () => {
+  //     setLoading(true);
+  //     await fetchEarningArray();
+  //     await fetchExpenseArray();
+  //     setLoading(false);
+  //   };
+  //   handleLoading();
+  // }, [])
 
   // let totalExpense = 0
   // expenseArray.forEach((item) =>{
@@ -95,12 +95,18 @@ const MyProfile = () => {
   //   totalEarning += item.amount
   // })
 
-  const totalExpense = expenseArray.reduce((acc, item) => acc + item.amount, 0);
-  const totalEarning = earningArray.reduce((acc, item) => acc + item.amount, 0);
+  const totalExpense = localStorage.getItem("totalExpense")
+  const totalEarning = localStorage.getItem("totalEarning")
+
+  // const totalExpense = expenseArray.reduce((acc, item) => acc + item.amount, 0);
+  // const totalEarning = earningArray.reduce((acc, item) => acc + item.amount, 0);
 
   const handleLogout = async() =>{
     const response = await fetch(SummaryApi.logout.url, {
       method: SummaryApi.logout.method,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
+      },
       credentials: 'include'
     })
     const data = await response.json()

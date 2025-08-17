@@ -67,6 +67,8 @@ const Earnings = () => {
       if(responseData.success){
         setEarningArray(responseData.data)
         // alert("data fetch success")
+        const totalEarning = earningArray.reduce((acc, item) => acc + item.amount, 0);
+        localStorage.setItem("totalEarning", totalEarning)
       }
       if(responseData.error){
         toast.error("Some error occurred in backend", responseData.error)
