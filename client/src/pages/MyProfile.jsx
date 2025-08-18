@@ -95,8 +95,9 @@ const MyProfile = () => {
   //   totalEarning += item.amount
   // })
 
-  const totalExpense = localStorage.getItem("totalExpense")
-  const totalEarning = localStorage.getItem("totalEarning")
+  const totalExpense = Number(localStorage.getItem("totalExpense"))
+  const totalEarning = Number(localStorage.getItem("totalEarning"))
+  // console.log("totalExpense", totalExpense, "totalEarning", totalEarning)
 
   // const totalExpense = expenseArray.reduce((acc, item) => acc + item.amount, 0);
   // const totalEarning = earningArray.reduce((acc, item) => acc + item.amount, 0);
@@ -112,7 +113,9 @@ const MyProfile = () => {
     const data = await response.json()
     if(data.success){
       toast.success(data.message)
-      localStorage.clear()
+      localStorage.removeItem("authToken")
+      localStorage.removeItem("totalExpense")
+      localStorage.removeItem("totalEarning")
       dispatch(logout())
       navigate("/login")
     }

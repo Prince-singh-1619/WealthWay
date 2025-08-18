@@ -18,8 +18,8 @@ const allowedOrigins = ['https://wealthway-hazel.vercel.app'];
 //middleware
 app.use(cors(
     {
-        // origin: process.env.FRONTEND_URL,
-        origin: allowedOrigins,
+        origin: process.env.FRONTEND_URL,
+        // origin: allowedOrigins,
         credentials: true,
         methods: ["POST", "GET", "PUT", "DELETE"],
     }

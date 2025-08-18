@@ -21,147 +21,11 @@ import UpdateExpense from '../helpers/UpdateExpense';
 
 
 const Expense = () => {
-  // const [sorted, setSorted] = useState(false);
-  // const [filtered, setFiltered] = useState(false);
 
-  // const expenseArray = [
-  //   {
-  //     title: "Grocery Shopping",
-  //     type: "Food & Essentials",
-  //     amount: 120.50,
-  //     date: "2025-04-03",
-  //     status: "Completed",
-  //     description: "nothing nothing nothing nothing nothing nothing nothing "
-  //   },
-  //   {
-  //     title: "Fuel Refill",
-  //     type: "Transport",
-  //     amount: 45.75,
-  //     date: "2025-04-02",
-  //     status: "Pending",
-  //     description: "",
-  //   },
-  //   {
-  //     title: "Online Course",
-  //     type: "Education",
-  //     amount: 1499,
-  //     date: "2025-04-02",
-  //     status: "Completed",
-  //     description: "",
-  //   },
-  //   {
-  //     title: "Doctor's Visit",
-  //     type: "Healthcare",
-  //     amount: 80.00,
-  //     date: "2025-04-01",
-  //     status: "Completed",
-  //     description: "",
-  //   },
-  //   {
-  //     title: "Movie Bill",
-  //     type: "Entertainment",
-  //     amount: 65.30,
-  //     date: "2025-03-30",
-  //     status: "Completed",
-  //     description: "",
-  //   },
-  //   {
-  //     title: "Netflix Monthly",
-  //     type: "Subscriptions",
-  //     amount: 499,
-  //     date: "2025-04-01",
-  //     status: "Pending",
-  //     description: "",
-  //   },
-  //   {
-  //     title: "outdoor",
-  //     type: "Others",
-  //     amount: 45.75,
-  //     date: "2025-04-02",
-  //     status: "Pending",
-  //     description: "dvsvsd",
-  //   },
-  //   {
-  //     title: "Birthday Gift",
-  //     type: "Shopping",
-  //     amount: 150.00,
-  //     date: "2025-03-28",
-  //     status: "Pending",
-  //     description: "",
-  //   },
-  //   {
-  //     title: "House Rent",
-  //     type: "Housing",
-  //     amount: 800.00,
-  //     date: "2025-03-25",
-  //     status: "Completed",
-  //     description: "",
-  //   },
-  //   {
-  //     title: "Internet Bill",
-  //     type: "Utilities",
-  //     amount: 50.00,
-  //     date: "2025-03-20",
-  //     status: "Completed",
-  //     description: "",
-  //   },
-  //   {
-  //     title: "Dinner at Restaurant",
-  //     type: "Food & Essentials",
-  //     amount: 75.20,
-  //     date: "2025-04-01",
-  //     status: "Completed",
-  //     description: "",
-  //   },
-  //   {
-  //     title: "Car Repair",
-  //     type: "Transport",
-  //     amount: 200.00,
-  //     date: "2025-03-29",
-  //     status: "Pending",
-  //     description: "",
-  //   },
-  //   {
-  //     title: "Pharmacy Purchase",
-  //     type: "Healthcare",
-  //     amount: 30.45,
-  //     date: "2025-03-31",
-  //     status: "Completed",
-  //     description: "",
-  //   },
-  //   {
-  //     title: "Concert Tickets",
-  //     type: "Entertainment",
-  //     amount: 120.00,
-  //     date: "2025-03-27",
-  //     status: "Completed",
-  //     description: "",
-  //   },
-  //   {
-  //     title: "New Shoes",
-  //     type: "Shopping",
-  //     amount: 95.99,
-  //     date: "2025-04-02",
-  //     status: "Pending",
-  //     description: "",
-  //   },
-  //   {
-  //     title: "Electricity Bill",
-  //     type: "Housing",
-  //     amount: 90.00,
-  //     date: "2025-03-22",
-  //     status: "Completed",
-  //     description: "",
-  //   },
-  //   {
-  //     title: "Water Bill",
-  //     type: "Utilities",
-  //     amount: 40.00,
-  //     date: "2025-03-18",
-  //     status: "Completed",
-  //     description: "",
-  //   },
-  // ]
+  // const [expenseArray, setExpenseArray] = useState([])
+  // useEffect(()=>{
+  //   setExpenseArray(expenseList)
+  // },[expenseList])
 
   const iconMap = {
     "Food & Essentials": <IoFastFood className="text-yellow-500" />,
@@ -205,7 +69,6 @@ const Expense = () => {
   }, [filterValues])
 
   const [expenseArray, setExpenseArray] = useState([])
- 
   const fetchExpenseArray = async() =>{
     try {
       console.log("userId: ", user.userId)
@@ -226,8 +89,9 @@ const Expense = () => {
         // alert("data fetch success")
         const reversedArray = responseData.data.slice().reverse();
         setExpenseArray(reversedArray)
-        const totalExpense = expenseArray.reduce((acc, item) => acc + item.amount, 0);
-        localStorage.setItem("totalExpense", totalExpense)
+        
+        const totalExpense = responseData.data.reduce((acc, item) => acc + item.amount, 0);
+        localStorage.setItem("totalExpense", JSON.stringify(totalExpense))
       }
       if(responseData.error){
         toast.error("Some error occurred in backend", responseData.error)

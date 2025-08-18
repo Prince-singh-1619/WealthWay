@@ -7,267 +7,82 @@ import { FaPlus } from 'react-icons/fa'
 import { Link } from 'react-router'
 import MakeLineChart from '../charts/MakeLineChart'
 
-const Home = () => {
+const Home = ({expenseList, earningList}) => {
   const [loading, setLoading] = useState(false)
-  const [earningArray, setEarningArray] = useState([])
-  const [expenseArray, setExpenseArray] = useState([])
   const {user} = useSelector(state => state.auth)
+  
+  const [expenseArray, setExpenseArray] = useState([])
+  const [earningArray, setEarningArray] = useState([])
+  useEffect(()=>{
+    setExpenseArray(expenseList)
+    setEarningArray(earningList)
+  },[expenseList, earningList])
 
-  // const expenseArray = [
-  //   {
-  //     title: "Grocery Shopping",
-  //     type: "Food & Essentials",
-  //     amount: 120.50,
-  //     date: "2025-04-03",
-  //     status: "Completed"
-  //   },
-  //   {
-  //     title: "Fuel Refill",
-  //     type: "Transport",
-  //     amount: 45.75,
-  //     date: "2025-04-02",
-  //     status: "Pending"
-  //   },
-  //   {
-  //     title: "Doctor's Visit",
-  //     type: "Healthcare",
-  //     amount: 80.00,
-  //     date: "2025-04-01",
-  //     status: "Completed"
-  //   },
-  //   {
-  //     title: "Movie Bill",
-  //     type: "Entertainment",
-  //     amount: 65.30,
-  //     date: "2025-03-30",
-  //     status: "Completed"
-  //   },
-  //   {
-  //     title: "outdoor",
-  //     type: "Others",
-  //     amount: 45.75,
-  //     date: "2025-04-02",
-  //     status: "Pending"
-  //   },
-  //   {
-  //     title: "Birthday Gift",
-  //     type: "Shopping",
-  //     amount: 150.00,
-  //     date: "2025-03-28",
-  //     status: "Pending"
-  //   },
-  //   {
-  //     title: "House Rent",
-  //     type: "Housing",
-  //     amount: 160.00,
-  //     date: "2025-03-25",
-  //     status: "Completed"
-  //   },
-  //   {
-  //     title: "Internet Bill",
-  //     type: "Utilities",
-  //     amount: 50.00,
-  //     date: "2025-03-20",
-  //     status: "Completed"
-  //   },
-  //   {
-  //     title: "Dinner at Restaurant",
-  //     type: "Food & Essentials",
-  //     amount: 75.20,
-  //     date: "2025-04-01",
-  //     status: "Completed"
-  //   },
-  //   {
-  //     title: "Car Repair",
-  //     type: "Transport",
-  //     amount: 200.00,
-  //     date: "2025-03-29",
-  //     status: "Pending"
-  //   },
-  //   {
-  //     title: "Pharmacy Purchase",
-  //     type: "Healthcare",
-  //     amount: 30.45,
-  //     date: "2025-03-31",
-  //     status: "Completed"
-  //   },
-  //   {
-  //     title: "Concert Tickets",
-  //     type: "Entertainment",
-  //     amount: 120.00,
-  //     date: "2025-03-27",
-  //     status: "Completed"
-  //   },
-  //   {
-  //     title: "New Shoes",
-  //     type: "Shopping",
-  //     amount: 95.99,
-  //     date: "2025-04-02",
-  //     status: "Pending"
-  //   },
-  //   {
-  //     title: "Electricity Bill",
-  //     type: "Housing",
-  //     amount: 90.00,
-  //     date: "2025-03-22",
-  //     status: "Completed"
-  //   },
-  //   {
-  //     title: "Water Bill",
-  //     type: "Utilities",
-  //     amount: 40.00,
-  //     date: "2025-03-18",
-  //     status: "Completed"
-  //   },
-  // ]
-
-  // const earningArray = [
-  //   {
-  //     title: "Monthly Salary",
-  //     type: "Salary",
-  //     amount: 55000,
-  //     date: "2025-04-01",
-  //     status: "Received"
-  //   },
-  //   {
-  //     title: "Freelance Web Project",
-  //     type: "Freelance",
-  //     amount: 15000,
-  //     date: "2025-03-28",
-  //     status: "Received"
-  //   },
-  //   {
-  //     title: "Side Business Profit",
-  //     type: "Business",
-  //     amount: 10000,
-  //     date: "2025-03-30",
-  //     status: "Received"
-  //   },
-  //   {
-  //     title: "Stock Market Return",
-  //     type: "Investment",
-  //     amount: 3500,
-  //     date: "2025-04-02",
-  //     status: "Received"
-  //   },
-  //   {
-  //     title: "Bank Interest",
-  //     type: "Interest",
-  //     amount: 1200,
-  //     date: "2025-04-03",
-  //     status: "Pending"
-  //   },
-  //   {
-  //     title: "Birthday Gift",
-  //     type: "Gift",
-  //     amount: 2000,
-  //     date: "2025-03-21",
-  //     status: "Received"
-  //   },
-  //   {
-  //     title: "Product Refund",
-  //     type: "Refund",
-  //     amount: 799,
-  //     date: "2025-03-27",
-  //     status: "Received"
-  //   },
-  //   {
-  //     title: "Flat Rent Received",
-  //     type: "Rent",
-  //     amount: 9000,
-  //     date: "2025-04-01",
-  //     status: "Received"
-  //   },
-  //   {
-  //     title: "Old Laptop Sold",
-  //     type: "Selling",
-  //     amount: 18000,
-  //     date: "2025-03-25",
-  //     status: "Received"
-  //   },
-  //   {
-  //     title: "Performance Bonus",
-  //     type: "Bonus",
-  //     amount: 5000,
-  //     date: "2025-03-31",
-  //     status: "Received"
-  //   },
-  //   {
-  //     title: "Other Misc Income",
-  //     type: "Others",
-  //     amount: 250,
-  //     date: "2025-04-02",
-  //     status: "Received"
-  //   }
-  // ]
-
-    
-    
   console.log("userId: ", user.userId)
-    const fetchExpenseArray = async() =>{
-      try {
-        console.log("userId: ", user.userId)
-        const response = await fetch(`${SummaryApi.fetchExpenses.url}?userId=${user.userId}` ,{
-          method: SummaryApi.fetchExpenses.method,
-          credentials: 'include',
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
-            "content-type" : "application/json",
-          },
-          // body: JSON.stringify({userId: user.userId})
-        })
-        const responseData = await response.json()
-        console.log("response done ")
-      
-        if(responseData.success){
-          setExpenseArray(responseData.data)
-          // alert("data fetch success")
-        }
-        if(responseData.error){
-          toast.error("Some error occurred in backend", responseData.error)
-        }
-  
-      } catch (error) {
-       toast.error("Some error occurred while fetch expenses", error) 
-      }
-    }
-    const fetchEarningArray = async() =>{
-      try {
-        console.log("userId: ", user.userId)
-        const response = await fetch(`${SummaryApi.fetchEarnings.url}?userId=${user.userId}` ,{
-          method: SummaryApi.fetchEarnings.method,
-          credentials: 'include',
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
-            "content-type" : "application/json",
-          },
-          // body: JSON.stringify({userId: user.userId})
-        })
-        const responseData = await response.json()
-        console.log("response done ")
-      
-        if(responseData.success){
-          setEarningArray(responseData.data)
-          // alert("data fetch success")
-        }
-        if(responseData.error){
-          toast.error("Some error occurred in backend", responseData.error)
-        }
-  
-      } catch (error) {
-       toast.error("Some error occurred while fetch earnings", error) 
-      }
-    }
-  
-    useEffect(()=>{
-      const handleLoading = async () => {
-        setLoading(true);
-        await fetchExpenseArray();
-        await fetchEarningArray();
-        setLoading(false);
-      };
-      handleLoading();
-    }, [])
+  // const fetchExpenseArray = async() =>{
+  //   try {
+  //     console.log("userId: ", user.userId)
+  //     const response = await fetch(`${SummaryApi.fetchExpenses.url}?userId=${user.userId}` ,{
+  //       method: SummaryApi.fetchExpenses.method,
+  //       credentials: 'include',
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
+  //         "content-type" : "application/json",
+  //       },
+  //       // body: JSON.stringify({userId: user.userId})
+  //     })
+  //     const responseData = await response.json()
+  //     console.log("response done ")
+    
+  //     if(responseData.success){
+  //       setExpenseArray(responseData.data)
+  //       // alert("data fetch success")
+  //     }
+  //     if(responseData.error){
+  //       toast.error("Some error occurred in backend", responseData.error)
+  //     }
+
+  //   } catch (error) {
+  //    toast.error("Some error occurred while fetch expenses", error) 
+  //   }
+  // }
+  // const fetchEarningArray = async() =>{
+  //   try {
+  //     console.log("userId: ", user.userId)
+  //     const response = await fetch(`${SummaryApi.fetchEarnings.url}?userId=${user.userId}` ,{
+  //       method: SummaryApi.fetchEarnings.method,
+  //       credentials: 'include',
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
+  //         "content-type" : "application/json",
+  //       },
+  //       // body: JSON.stringify({userId: user.userId})
+  //     })
+  //     const responseData = await response.json()
+  //     console.log("response done ")
+    
+  //     if(responseData.success){
+  //       setEarningArray(responseData.data)
+  //       // alert("data fetch success")
+  //     }
+  //     if(responseData.error){
+  //       toast.error("Some error occurred in backend", responseData.error)
+  //     }
+
+  //   } catch (error) {
+  //    toast.error("Some error occurred while fetch earnings", error) 
+  //   }
+  // }
+
+  // useEffect(()=>{
+  //   const handleLoading = async () => {
+  //     setLoading(true);
+  //     await fetchExpenseArray();
+  //     await fetchEarningArray();
+  //     setLoading(false);
+  //   };
+  //   handleLoading();
+  // }, [])
 
   const categoryColorMap = [
     { expenseCategory: "Food & Essentials", earningCategory: "Salary", color: "#FF6384" },    // Red-pink

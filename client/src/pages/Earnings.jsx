@@ -20,6 +20,11 @@ import { useSelector } from 'react-redux';
 import UpdateEarning from '../helpers/UpdateEarning';
 
 const Earnings = () => {
+  // const [earningArray, setEarningArray] = useState([])
+  // useEffect(()=>{
+  //   setEarningArray(earningList)
+  // },[earningList])
+
   const [loading, setLoading] = useState(false)
   // const [sorted, setSorted] = useState(false);
   const [sortType, setSortType] = useState('');
@@ -48,7 +53,7 @@ const Earnings = () => {
   }, [filterValues])
 
   const [earningArray, setEarningArray] = useState([])
- 
+  
   const fetchEarningArray = async() =>{
     try {
       console.log("userId: ", user.userId)
@@ -67,8 +72,8 @@ const Earnings = () => {
       if(responseData.success){
         setEarningArray(responseData.data)
         // alert("data fetch success")
-        const totalEarning = earningArray.reduce((acc, item) => acc + item.amount, 0);
-        localStorage.setItem("totalEarning", totalEarning)
+        const totalEarning = responseData.data.reduce((acc, item) => acc + item.amount, 0);
+        localStorage.setItem("totalEarning", JSON.stringify(totalEarning))
       }
       if(responseData.error){
         toast.error("Some error occurred in backend", responseData.error)
@@ -88,121 +93,6 @@ const Earnings = () => {
     handleLoading();
   }, [])
 
-  // const [earningArray, setEarningArray] = useState([
-  //   {
-  //     title: "Monthly Salary",
-  //     type: "Salary",
-  //     amount: 55000,
-  //     date: "2025-04-01",
-  //     status: "Received",
-  //     description: "Hi, this isn't a first description",
-  //   },
-  //   {
-  //     title: "Freelance Web Project",
-  //     type: "Freelance",
-  //     amount: 15000,
-  //     date: "2025-03-28",
-  //     status: "Received",
-  //     description: "",
-  //   },
-  //   {
-  //     title: "Side Business Profit",
-  //     type: "Business",
-  //     amount: 10000,
-  //     date: "2025-03-30",
-  //     status: "Received",
-  //     description: "Hola!!",
-  //   },
-  // ])
-
-  // const earningArray = 
-  // [
-  //   {
-  //     title: "Monthly Salary",
-  //     type: "Salary",
-  //     amount: 55000,
-  //     date: "2025-04-01",
-  //     status: "Received"
-  //   },
-  //   {
-  //     title: "Freelance Web Project",
-  //     type: "Freelance",
-  //     amount: 15000,
-  //     date: "2025-03-28",
-  //     status: "Received"
-  //   },
-  //   {
-  //     title: "Side Business Profit",
-  //     type: "Business",
-  //     amount: 10000,
-  //     date: "2025-03-30",
-  //     status: "Received"
-  //   },
-  //   // {
-  //   //   title: "Side Business Profit",
-  //   //   type: "Salary",
-  //   //   amount: 12000,
-  //   //   date: "2025-03-30",
-  //   //   status: "Pending"
-  //   // },
-  //   // {
-  //   //   title: "Stock Market Return",
-  //   //   type: "Investment",
-  //   //   amount: 3500,
-  //   //   date: "2025-04-02",
-  //   //   status: "Received"
-  //   // },
-  //   // {
-  //   //   title: "Bank Interest",
-  //   //   type: "Interest",
-  //   //   amount: 1200,
-  //   //   date: "2025-04-03",
-  //   //   status: "Pending"
-  //   // },
-  //   // {
-  //   //   title: "Birthday Gift",
-  //   //   type: "Gift",
-  //   //   amount: 2000,
-  //   //   date: "2025-03-21",
-  //   //   status: "Received"
-  //   // },
-  //   // {
-  //   //   title: "Product Refund",
-  //   //   type: "Refund",
-  //   //   amount: 799,
-  //   //   date: "2025-03-27",
-  //   //   status: "Received"
-  //   // },
-  //   // {
-  //   //   title: "Flat Rent Received",
-  //   //   type: "Rent",
-  //   //   amount: 9000,
-  //   //   date: "2025-04-01",
-  //   //   status: "Received"
-  //   // },
-  //   // {
-  //   //   title: "Old Laptop Sold",
-  //   //   type: "Selling",
-  //   //   amount: 18000,
-  //   //   date: "2025-03-25",
-  //   //   status: "Received"
-  //   // },
-  //   // {
-  //   //   title: "Performance Bonus",
-  //   //   type: "Bonus",
-  //   //   amount: 5000,
-  //   //   date: "2025-03-31",
-  //   //   status: "Received"
-  //   // },
-  //   // {
-  //   //   title: "Other Misc Income",
-  //   //   type: "Others",
-  //   //   amount: 250,
-  //   //   date: "2025-04-02",
-  //   //   status: "Received"
-  //   // }
-  // ]
-  // console.log("array length", earningArray.length)
   const [sortedEarnings, setSortedEarnings] = useState(earningArray)
   const [filteredEarning, setFilteredEarning] = useState(earningArray)
 
