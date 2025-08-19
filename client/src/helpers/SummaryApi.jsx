@@ -1,5 +1,5 @@
-const backendDomain="http://localhost:8080"
-// const backendDomain="https://wealth-way-eight.vercel.app"
+// const backendDomain="http://localhost:8080"
+const backendDomain="https://wealth-way-eight.vercel.app"
 
 const SummaryApi = {
     signUp:{
