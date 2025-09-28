@@ -27,17 +27,17 @@ app.use(cors(
 app.use(express.json({ limit:'2mb' }))
 app.use(cookieParser())
 
-//DB Connection
-mongoose.connect(process.env.MONGODB_URI, 
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        ssl: true,
-        tlsAllowInvalidCertificates: false
-    }
-)
-    .then(()=> console.log("MongoDB Connected"))
-    .catch(err => console.error("MongoDB connection error: ", err))
+// //DB Connection
+// mongoose.connect(process.env.MONGODB_URI, 
+//     {
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true,
+//         ssl: true,
+//         tlsAllowInvalidCertificates: false
+//     }
+// )
+//     .then(()=> console.log("MongoDB Connected"))
+//     .catch(err => console.error("MongoDB connection error: ", err))
 
 app.use("/api", router)
 

@@ -102,7 +102,7 @@ const Login = () => {
                 <section className='w-1/2 max-md:w-full flex justify-center'>
                     <div className='w-[90%] flex flex-col gap-4'>
                         <p className='text-5xl max-sm:text-3xl font-bold text-center'>Login</p>
-                        <span className='w-full text-xl max-sm:text-sm text-slate-700 dark:text-slate-300 -mt-2 mb-6 text-center tracking-[0.5rem]'>to get started</span>
+                        <span className='w-full text-xl max-sm:text-sm text-slate-300 -mt-2 mb-6 text-center tracking-[0.5rem]'>to get started</span>
 
                         <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
                             <input placeholder='Email' type='email' name='email' required className='input-field' value={data.email} onChange={handleOnChange} />

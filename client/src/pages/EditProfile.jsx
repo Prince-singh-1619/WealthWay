@@ -130,13 +130,13 @@ const EditProfile = () => {
         <form onSubmit={handleSubmit} className='flex flex-col items-around gap-4 '>  
           <div className='w-fit flex max-md:flex-col justify-around gap-4'>
               {/* input profile image */}
-              <div className='h-56 w-56 rounded-full mx-auto flex justify-center items-center border-[1px] border-slate-400 dark:border-[#413c3c] overflow-hidden relative'>
+              <div className='h-56 w-56 rounded-full mx-auto flex justify-center items-center border-[1px] border-[#413c3c] overflow-hidden relative'>
                   <img src={data?.profilePic || defaultUserPic} alt='user profile' className='h-full w-full rounded-full object-cover'/>
                   <input id='upload-pic' type='file' name='profilePic' accept="image/*" className='hidden' onChange={handleUploadPic}/>
                   <label htmlFor='upload-pic' className='absolute w-full bg-opacity-80 text-center bottom-0 cursor-pointer'>
-                      <span className='w-full bg-slate-300 dark:bg-[#322f2f] text-black dark:text-[#dadada] bg-opacity-100 z-10 p-1 pt-0 rounded-lg scale-10 border-[1px]'>
+                      <span className='w-full bg-[#322f2f] text-[#dadada] bg-opacity-100 z-10 p-1 pt-0 rounded-lg scale-10 border-[1px]'>
                           { data.profilePic==="" ? ("Upload") : (
-                              <span onClick={removeProfilePic} className='text-red-600 dark:text-red-400'>remove</span>
+                              <span onClick={removeProfilePic} className='text-red-400'>remove</span>
                               )
                           }
                       </span>
