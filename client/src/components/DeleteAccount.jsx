@@ -31,7 +31,7 @@ const DeleteAccount = ({open, onClose}) => {
         try {
             const response = await fetch(`${SummaryApi.deleteUser.url}?password=${data.password}&userId=${user.userId}`, {
                 method: SummaryApi.deleteUser.method,
-                credentials: 'include',
+                // credentials: 'include',
                 headers:{
                     Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
                     'Content-Type' : 'application/json'

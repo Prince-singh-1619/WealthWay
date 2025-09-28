@@ -31,7 +31,7 @@ const Support = () => {
     try {
       const response = await fetch(SummaryApi.getSupport.url, {
         method: SummaryApi.getSupport.method,
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
           'Content-Type': 'application/json',

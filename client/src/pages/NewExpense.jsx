@@ -62,7 +62,7 @@ const NewExpense = () => {
 
         const response = await fetch(SummaryApi.newExpense.url, {
             method: SummaryApi.newExpense.method,
-            credentials: 'include',
+            // credentials: 'include',
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
                 "content-type" : "application/json",

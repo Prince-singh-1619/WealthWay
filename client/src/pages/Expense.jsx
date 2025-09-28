@@ -74,7 +74,7 @@ const Expense = () => {
       console.log("userId: ", user.userId)
       const response = await fetch(`${SummaryApi.fetchExpenses.url}?userId=${user.userId}` ,{
         method: SummaryApi.fetchExpenses.method,
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
           "content-type" : "application/json",
@@ -197,7 +197,7 @@ const Expense = () => {
     try{
       const response = await fetch(`${SummaryApi.deleteExpense.url}?dataId=${dataId}`, {
         method: SummaryApi.deleteExpense.method,
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
           'content-type' : 'application/json'
@@ -228,7 +228,7 @@ const Expense = () => {
     try {
       const response = await fetch(SummaryApi.editExpense.url, {
         method: SummaryApi.editExpense.method,
-        credentials: 'include',
+        // credentials: 'include',
         headers :{
           Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
           'content-type' : 'application/json'
@@ -371,7 +371,7 @@ const Expense = () => {
             )
             
           }
-          {expenseArray.length===0 && <div className='opacity-50 text-center '>Nothing to display, try adding from above.</div>}
+          {expenseArray.length===0 && !loading && <div className='opacity-50 text-center '>Nothing to display, try adding from above.</div>}
         </section>
         
       </section>

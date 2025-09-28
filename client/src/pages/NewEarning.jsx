@@ -39,7 +39,7 @@ const NewEarning = () => {
 
         const response = await fetch(SummaryApi.newEarning.url, {
             method: SummaryApi.newEarning.method,
-            credentials: 'include',
+            // credentials: 'include',
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
                 "content-type" : "application/json"

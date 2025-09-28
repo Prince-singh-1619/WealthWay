@@ -7,8 +7,8 @@ import { FaPlus } from 'react-icons/fa'
 import { Link } from 'react-router'
 import MakeLineChart from '../charts/MakeLineChart'
 
-const Home = ({expenseList, earningList}) => {
-  const [loading, setLoading] = useState(false)
+const Home = ({loading, expenseList, earningList}) => {
+  // const [loading, setLoading] = useState(false)
   const {user} = useSelector(state => state.auth)
   
   const [expenseArray, setExpenseArray] = useState([])
@@ -18,7 +18,7 @@ const Home = ({expenseList, earningList}) => {
     setEarningArray(earningList)
   },[expenseList, earningList])
 
-  console.log("userId: ", user.userId)
+  console.log("userId: ", user?.userId)
   // const fetchExpenseArray = async() =>{
   //   try {
   //     console.log("userId: ", user.userId)

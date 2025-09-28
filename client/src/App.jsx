@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom
 import './App.css'
 import Home from './pages/Home'
 import Expense from './pages/Expense'
-import Trips from './pages/Trips'
+// import Trips from './pages/Trips'
 import Earnings from './pages/Earnings'
 import MyProfile from './pages/MyProfile'
 import Support from './pages/Support'
@@ -35,6 +35,7 @@ const Layout = () => {
 };
 
 function App() {
+  // const isLoggedIn = localStorage.getItem("authToken");
 
   const {user} = useSelector(state => state.auth)
   const [loading, setLoading] = useState(false)
@@ -46,7 +47,7 @@ function App() {
       console.log("userId: ", user.userId)
       const response = await fetch(`${SummaryApi.fetchExpenses.url}?userId=${user.userId}` ,{
         method: SummaryApi.fetchExpenses.method,
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
           "content-type" : "application/json",
@@ -79,7 +80,7 @@ function App() {
       console.log("userId: ", user.userId)
       const response = await fetch(`${SummaryApi.fetchEarnings.url}?userId=${user.userId}` ,{
         method: SummaryApi.fetchEarnings.method,
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
           "content-type" : "application/json",
@@ -105,10 +106,10 @@ function App() {
   }
 
   useEffect(()=>{
+    // if(!isLoggedIn) return;
     const handleLoading = async () => {
       setLoading(true);
-      await fetchExpenseArray();
-      await fetchEarningArray();
+      await Promise.all( [fetchExpenseArray(), fetchEarningArray()] )
       setLoading(false);
     };
     handleLoading();
@@ -123,11 +124,14 @@ function App() {
         <Route path="/forgot-password" element={<PublicOnlyRoute> <ForgotPassword/> </PublicOnlyRoute>}/>
         <Route path="/reset-password/:token" element={<PublicOnlyRoute> <ResetPassword/> </PublicOnlyRoute>}/>
         
-          {loading && "loading....."}
-          <Route className='max-md:ml-14' element={<ProtectedRoute> <Layout/> </ProtectedRoute>} >
-          <Route path="/" element={<Home expenseList={expenseArray} earningList={earningArray}/>} />
+        <Route className='max-md:ml-14' element={<ProtectedRoute> <Layout/> </ProtectedRoute>} >
+          <Route path="/" element={ 
+            <ProtectedRoute>
+              <Home loading={loading} expenseList={expenseArray} earningList={earningArray}/>
+            </ProtectedRoute>} 
+          />
           <Route path="/expense" element={<Expense/>} />
-          <Route path="/trips" element={<Trips/>} />
+          {/* <Route path="/trips" element={<Trips/>} /> */}
           <Route path="/earnings" element={<Earnings />}/>
           <Route path="/my-profile" element={<MyProfile/>} />
           <Route path="/support" element={<Support/>} />
@@ -135,8 +139,8 @@ function App() {
           <Route path="/new-earning" element={<NewEarning/>} />
           <Route path="/edit-profile" element={<EditProfile/>} />
           {/* <Route path="/show" element={<ShowDescription/>} /> */}
-         
         </Route>
+
       </Routes>
     </Router>
   )

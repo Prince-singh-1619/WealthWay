@@ -59,7 +59,7 @@ const Earnings = () => {
       console.log("userId: ", user.userId)
       const response = await fetch(`${SummaryApi.fetchEarnings.url}?userId=${user.userId}` ,{
         method: SummaryApi.fetchEarnings.method,
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
           "content-type" : "application/json",
@@ -195,7 +195,7 @@ const Earnings = () => {
     try{
       const response = await fetch(`${SummaryApi.deleteEarning.url}?dataId=${dataId}`, {
         method: SummaryApi.deleteEarning.method,
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
           'content-type' : 'application/json'
@@ -226,7 +226,7 @@ const Earnings = () => {
     try {
       const response = await fetch(SummaryApi.editEarning.url, {
         method: SummaryApi.editEarning.method,
-        credentials: 'include',
+        // credentials: 'include',
         headers :{
           Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
           'content-type' : 'application/json'

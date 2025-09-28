@@ -90,7 +90,7 @@ const EditProfile = () => {
 
       const response = await fetch(SummaryApi.updateProfile.url, {
         method: SummaryApi.updateProfile.method,
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
           "Authorization" : `Bearer ${token}`,

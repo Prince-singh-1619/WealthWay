@@ -23,8 +23,9 @@ const MergeUploadedFile = (file, existingArray, setSortedEarnings, userId, array
       try {
         const response = await fetch(SummaryApi.uploadMergedExpenses.url, {
           method: SummaryApi.uploadMergedExpenses.method,
-          credentials: 'include',
+          // credentials: 'include',
           headers :{
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
             'content-type' : "application/json"
           },
           body: JSON.stringify(data)
@@ -46,8 +47,9 @@ const MergeUploadedFile = (file, existingArray, setSortedEarnings, userId, array
       try {
         const response = await fetch(SummaryApi.uploadMergedEarnings.url, {
           method: SummaryApi.uploadMergedEarnings.method,
-          credentials: 'include',
+          // credentials: 'include',
           headers :{
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
             'content-type' : "application/json"
           },
           body: JSON.stringify(data)

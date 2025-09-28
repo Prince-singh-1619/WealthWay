@@ -14,87 +14,6 @@ const MyProfile = () => {
   const [showDeleteBox, setShowDeleteBox] = useState(false)
   const {user} = useSelector((state) => state.auth)
 
-  // const [expenseArray, setExpenseArray] = useState([])
-  // const [earningArray, setEarningArray] = useState([])
-  // const [loading, setLoading] = useState()
-
-  // const fetchEarningArray = async() =>{
-  //   try {
-  //     console.log("userId: ", user.userId)
-  //     const response = await fetch(`${SummaryApi.fetchEarnings.url}?userId=${user.userId}` ,{
-  //       method: SummaryApi.fetchEarnings.method,
-  //       credentials: 'include',
-  //       headers: {
-  //         Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
-  //         "content-type" : "application/json",
-  //       },
-  //       // body: JSON.stringify({userId: user.userId})
-  //     })
-  //     const responseData = await response.json()
-  //     console.log("response done ")
-    
-  //     if(responseData.success){
-  //       setEarningArray(responseData.data)
-  //       console.log("earningArray", earningArray)
-  //       // alert("data fetch success")
-  //     }
-  //     if(responseData.error){
-  //       toast.error("Some error occurred in backend", responseData.error)
-  //     }
-
-  //   } catch (error) {
-  //    toast.error("Some error occurred while fetch earnings", error) 
-  //   }
-  // }
-  // const fetchExpenseArray = async() =>{
-  //   try {
-  //     console.log("userId: ", user.userId)
-  //     const response = await fetch(`${SummaryApi.fetchExpenses.url}?userId=${user.userId}` ,{
-  //       method: SummaryApi.fetchExpenses.method,
-  //       credentials: 'include',
-  //       headers: {
-  //         Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
-  //         "content-type" : "application/json",
-  //       },
-  //       // body: JSON.stringify({userId: user.userId})
-  //     })
-  //     const responseData = await response.json()
-  //     console.log("response done ")
-    
-  //     if(responseData.success){
-  //       // setExpenseArray(responseData.data)
-  //       // alert("data fetch success")
-  //       const reversedArray = responseData.data.slice().reverse();
-  //       setExpenseArray(reversedArray)
-  //     }
-  //     if(responseData.error){
-  //       toast.error("Some error occurred in backend", responseData.error)
-  //     }
-
-  //   } catch (error) {
-  //    toast.error("Some error occurred while fetch expenses", error) 
-  //   }
-  // }
-
-  // useEffect(()=>{
-  //   const handleLoading = async () => {
-  //     setLoading(true);
-  //     await fetchEarningArray();
-  //     await fetchExpenseArray();
-  //     setLoading(false);
-  //   };
-  //   handleLoading();
-  // }, [])
-
-  // let totalExpense = 0
-  // expenseArray.forEach((item) =>{
-  //   totalExpense += item.amount
-  // })
-  // let totalEarning = 0
-  // earningArray.forEach((item)=>{
-  //   totalEarning += item.amount
-  // })
-
   const totalExpense = Number(localStorage.getItem("totalExpense"))
   const totalEarning = Number(localStorage.getItem("totalEarning"))
   // console.log("totalExpense", totalExpense, "totalEarning", totalEarning)
@@ -108,7 +27,7 @@ const MyProfile = () => {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("authToken")}`, //added after cookie removal
       },
-      credentials: 'include'
+      // credentials: 'include'
     })
     const data = await response.json()
     if(data.success){
@@ -153,7 +72,7 @@ const MyProfile = () => {
 
       {/* edit profile */}
       <section className='flex max-lg:flex-col max-lg:gap-4 max-lg:items-center mt-4 justify-around max-md:justify-center max-md:items-center'>
-        <div className='w-fit max-md:w-[90%] p-4  flex flex-col items-center justify-around gap-4 bg-[#333333] rounded-2xl '>
+        <div className='w-fit max-md:w-[90%] p-8 flex flex-col items-center justify-around gap-4 bg-[#333333] rounded-2xl '>
           <div className='flex max-md:flex-col  items-center gap-4'>
             <div className='w-56 h-56 rounded-full border-[1px] overflow-hidden'>
               <img src={user?.profilePic || defaultUserImg} alt='profilePic' className='h-full w-full object-cover'/>
@@ -167,7 +86,7 @@ const MyProfile = () => {
           <Link to='/edit-profile' className='btn btn-bg w-full btn-plus text-center'>Edit Profile</Link>
         </div>
 
-        <div className='w-fit max-md:w-[90%] max-md:text-center h-fit p-8 px-12 bg-[#333333] rounded-2xl'>
+        <div className='max-md:w-[90%] max-md:text-center p-8 py-8 bg-[#333333] rounded-2xl'>
           <span className='text-4xl font-semibold'>Summary: </span>
           <div className='w-full h-[0.5px] bg-slate-600 my-4'></div>
           <div className='flex max-md:flex-col justify-around gap-18'>
