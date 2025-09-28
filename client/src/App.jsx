@@ -35,7 +35,7 @@ const Layout = () => {
 };
 
 function App() {
-  // const isLoggedIn = localStorage.getItem("authToken");
+  const isLoggedIn = localStorage.getItem("authToken");
 
   const {user} = useSelector(state => state.auth)
   const [loading, setLoading] = useState(false)
@@ -106,7 +106,7 @@ function App() {
   }
 
   useEffect(()=>{
-    // if(!isLoggedIn) return;
+    if(!isLoggedIn) return;
     const handleLoading = async () => {
       setLoading(true);
       await Promise.all( [fetchExpenseArray(), fetchEarningArray()] )

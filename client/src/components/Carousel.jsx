@@ -20,9 +20,9 @@ const Carousel = ({images}) => {
 
   return (
     <div className="relative w-full flex justify-center items-center max-w-lg m-auto " >
-      <button onClick={prevSlide} className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black/50 p-2 text-white z-10">
+      {/* <button onClick={prevSlide} className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black/50 p-2 text-white z-10">
         &#10094;
-      </button>
+      </button> */}
 
       <div className=" flex justify-center items-center">
         <img src={images[currentIndex]} alt="Slide" className="w-full h-full object-cover rounded-md transition-all relative" />
@@ -38,10 +38,9 @@ const Carousel = ({images}) => {
         </div>
       </div>
 
-      <button onClick={nextSlide} className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black/50 p-2 text-white z-10">
+      {/* <button onClick={nextSlide} className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black/50 p-2 text-white z-10">
         &#10095;
-      </button>
-
+      </button> */}
       
     </div>
   );
