@@ -113,7 +113,7 @@ function App() {
       setLoading(false);
     };
     handleLoading();
-  }, [])
+  }, [isLoggedIn])
 
   return (
     <Router >
